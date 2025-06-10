@@ -11,7 +11,10 @@ templates = Jinja2Templates(directory="templates")
 @app.get("/jobs")
 def read_jobs():
     """Return a list of job listings."""
-    jobs = get_jobs()
+    try:
+        jobs = get_jobs()
+    except Exception:
+        jobs = []
     return jobs
 
 
