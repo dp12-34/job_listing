@@ -23,3 +23,16 @@ def test_jobs_endpoint(monkeypatch):
     response = client.get("/jobs")
     assert response.status_code == 200
     assert response.json() == sample_jobs
+
+
+def test_jobs_endpoint_handles_error(monkeypatch):
+    import requests
+
+    def fail_get_jobs():
+        raise requests.RequestException("failed")
+
+    monkeypatch.setattr("app.job_provider.get_jobs", fail_get_jobs)
+    client = TestClient(app)
+    response = client.get("/jobs")
+    assert response.status_code == 200
+    assert response.json() == []

@@ -1,6 +1,6 @@
 # Job Listing API
 
-This project provides a simple FastAPI application that serves job listings for computer science graduates. It includes a small frontend to display jobs fetched from a remote API (Remotive).
+This project provides a simple FastAPI application that serves job listings for computer science graduates. It includes a small frontend to display jobs fetched from a remote API (Remotive). If the provider is unreachable, the API returns an empty list instead of failing.
 
 ## Setup
 
